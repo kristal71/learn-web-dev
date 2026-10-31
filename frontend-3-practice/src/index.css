@@ -1,8 +1,3 @@
-/* Глобальные стили.
-   Минимум: сброс отступов и шрифт по умолчанию.
-   Остальное — стили своей страницы — добавляем сами
-   (в этом файле или в отдельных .css для компонентов). */
-
 * {
   margin: 0;
   padding: 0;
@@ -10,6 +5,487 @@
 }
 
 body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f7f7f3;
+  color: #26332a;
+  line-height: 1.4;
+}
+
+.page {
   min-height: 100vh;
-  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.header {
+  background-color: #ffffff;
+  padding: 18px 0;
+  border-bottom: 1px solid #ebece6;
+}
+
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.brand__name {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #1f3126;
+}
+
+.brand__desc {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: #5c665e;
+  font-weight: 600;
+}
+
+.nav {
+  display: flex;
+  gap: 32px;
+}
+
+.nav__link {
+  font-size: 14px;
+  color: #2b382f;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.nav__link:hover {
+  opacity: 0.7;
+}
+
+.header__phone {
+  font-size: 15px;
+  font-weight: 500;
+  color: #1f3126;
+  text-decoration: none;
+}
+
+.header__phone:hover {
+  opacity: 0.7;
+}
+
+.stepper-section {
+  background-color: #ffffff;
+  padding: 24px 0 20px;
+  border-bottom: 1px solid #ebece6;
+}
+
+.stepper {
+  display: flex;
+  width: 100%;
+}
+
+.step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.step--last {
+  flex: 0 0 auto;
+}
+
+.step__top {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.step__circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #e5e8e3;
+  color: #7d887f;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.step__line {
+  flex: 1;
+  height: 3px;
+  background-color: #e5e8e3;
+  margin: 0 10px;
+}
+
+.step__label {
+  font-size: 13px;
+  color: #69736b;
+}
+
+.step--done .step__circle {
+  background-color: #9cb1a4;
+  color: #ffffff;
+}
+
+.step--done .step__line {
+  background-color: #9cb1a4;
+}
+
+.step--active .step__circle {
+  background-color: #354e40;
+  color: #ffffff;
+}
+
+.step--active .step__line {
+  background-color: #354e40;
+}
+
+.step--active .step__label {
+  color: #354e40;
+  font-weight: 700;
+}
+
+.main {
+  flex: 1;
+  padding: 34px 0 54px;
+}
+
+.heading-group {
+  margin-bottom: 28px;
+}
+
+.heading-group__step {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #354e40;
+  margin-bottom: 10px;
+}
+
+.heading-group__title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 38px;
+  font-weight: 400;
+  color: #1f3126;
+  margin-bottom: 8px;
+}
+
+.heading-group__subtitle {
+  font-size: 14px;
+  color: #606d64;
+}
+
+.cards-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 28px;
+  margin-bottom: 24px;
+}
+
+.card {
+  background-color: #ffffff;
+  border: 1px solid #ebece6;
+  border-radius: 14px;
+  padding: 28px;
+}
+
+.calendar-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.calendar-card__month {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #1f3126;
+}
+
+.btn-arrow {
+  width: 32px;
+  height: 32px;
+  background-color: #ffffff;
+  border: 1px solid #e0e3dd;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #2b382f;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.btn-arrow:hover {
+  background-color: #f7f7f3;
+  border-color: #354e40;
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  justify-items: center;
+  margin-bottom: 12px;
+}
+
+.calendar-weekdays span {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #717d74;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  row-gap: 12px;
+  column-gap: 8px;
+  justify-items: center;
+}
+
+.day-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid #e4e7e1;
+  background-color: #ffffff;
+  font-size: 14px;
+  color: #223126;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.day-circle:hover:not(:disabled):not(.day-circle--selected) {
+  border-color: #354e40;
+  background-color: #f6f8f5;
+}
+
+.day-circle--selected {
+  background-color: #354e40;
+  border-color: #354e40;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.day-circle--disabled {
+  color: #bcc3be;
+  border-color: #f0f2ee;
+  background-color: transparent;
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.slots-card__title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 21px;
+  font-weight: 400;
+  color: #1f3126;
+  margin-bottom: 14px;
+}
+
+.slots-card__date {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #223126;
+  margin-bottom: 22px;
+}
+
+.slots-card__icon {
+  color: #354e40;
+  flex-shrink: 0;
+}
+
+.slots-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.slots-empty-message {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px 10px;
+  color: #717d74;
+  font-size: 14px;
+}
+
+.slot-button {
+  height: 44px;
+  border: 1px solid #e5e8e2;
+  border-radius: 6px;
+  background-color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  color: #26332a;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.slot-button:hover:not(:disabled):not(.slot-button--selected) {
+  border-color: #354e40;
+}
+
+.slot-button--inactive {
+  background-color: #e9ece9;
+  border-color: transparent;
+  color: #4b574f;
+}
+
+.slot-button--inactive:hover:not(.slot-button--selected) {
+  background-color: #dfe3df;
+  border-color: transparent;
+}
+
+.slot-button--selected {
+  background-color: #385042;
+  border-color: #385042;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.btn {
+  padding: 11px 26px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn--back {
+  background-color: transparent;
+  border: 1px solid #354e40;
+  color: #354e40;
+  font-weight: 500;
+}
+
+.btn--back:hover {
+  background-color: #ebefec;
+}
+
+.btn--next {
+  background-color: #385042;
+  border: 1px solid #385042;
+  color: #ffffff;
+  font-weight: 600;
+  min-width: 104px;
+}
+
+.btn--next:hover {
+  background-color: #273a2f;
+  border-color: #273a2f;
+}
+
+.footer {
+  background-color: #21352a;
+  color: #c0ccc3;
+  padding: 46px 0 28px;
+}
+
+.footer__columns {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 34px;
+  border-bottom: 1px solid #2e4336;
+}
+
+.footer__logo {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #ffffff;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.footer__text {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #8fa597;
+  max-width: 320px;
+}
+
+.footer__title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.footer__entry {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #b1c2b7;
+  margin-bottom: 10px;
+}
+
+.footer__icon {
+  color: #8fa597;
+  flex-shrink: 0;
+}
+
+.footer__phone {
+  color: #b1c2b7;
+  text-decoration: none;
+}
+
+.footer__phone:hover {
+  color: #ffffff;
+}
+
+.footer__schedule {
+  font-size: 13px;
+  color: #b1c2b7;
+  margin-bottom: 8px;
+}
+
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 22px;
+  font-size: 12px;
+  color: #7b9183;
+}
+
+.footer__policy {
+  color: #7b9183;
+  text-decoration: underline;
+}
+
+.footer__policy:hover {
+  color: #ffffff;
 }
