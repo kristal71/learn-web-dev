@@ -6,8 +6,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
 from database import Base, SessionLocal, engine, get_db
-from models import Master
-from schemas import MasterResponse
+from models import Master, Service
+from schemas import MasterResponse, ServiceCreate, ServiceResponse
 
 
 @asynccontextmanager
@@ -39,11 +39,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.get("/masters", response_model=List[MasterResponse])
 def get_masters(
-    specialization: Optional[str] = Query(
-        None, description="Фильтрация по специализации мастера"
-    ),
+    specialization: Optional[str] = Query(None),
     db: Session = Depends(get_db),
 ):
     query = db.query(Master)
@@ -61,3 +60,30 @@ def get_master(master_id: int, db: Session = Depends(get_db)):
             detail="Master not found",
         )
     return master
+
+
+@app.post(
+    "/services",
+    response_model=ServiceResponse,
+    status_code=status.HTTP_201_CREATED,
+)
+def create_service(
+    service_data: ServiceCreate,
+    db: Session = Depends(get_db),
+):
+    new_service = Service(
+        categoryId=service_data.categoryId,
+        title=service_data.title,
+        desc=service_data.desc,
+        duration=service_data.duration,
+        price=service_data.price,
+    )
+    db.add(new_service)
+    db.commit()
+    db.refresh(new_service)
+    return new_service
+
+
+@app.get("/services", response_model=List[ServiceResponse])
+def get_services(db: Session = Depends(get_db)):
+    return db.query(Service).all()
